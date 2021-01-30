@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Services;
 
+use App\Factories\TasksFactory;
 use App\Models\TodoList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,12 +22,15 @@ class TodoListService
     }
 
     /**
+     * @param Request $request
      * @return array
      */
-    public function getTasks(): array
+    public function getTasks(Request $request): array
     {
         try {
-            $tasks = $this->todoList->tasks()->get();
+            $tasks = (new TasksFactory($request))
+                ->make()
+                ->paginate($request->perPage);
 
             throw_if(!$tasks, \Exception::class, trans('messages.tasks.notFound'), 404);
 
