@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TaskRequest;
 use App\Services\TodoListService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 
 class TodoListController extends Controller
@@ -22,11 +23,12 @@ class TodoListController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return JsonResponse
      */
-    public function list(): JsonResponse
+    public function list(Request $request): JsonResponse
     {
-        $tasks = $this->todoListService->getTasks();
+        $tasks = $this->todoListService->getTasks($request);
 
         return $this->response($tasks);
     }
