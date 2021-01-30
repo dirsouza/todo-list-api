@@ -17,7 +17,8 @@ return [
             'required' => 'O campo :attribute é obrigatório.',
             'min' => 'O campo :attribute deve conter mais de :min caracteres.',
             'max' => 'O campo :attribute deve conter no máximo :max caracteres.',
-            'boolean' => 'O campo :attribute deve ser verdadeiro ou falso.'
+            'boolean' => 'O campo :attribute deve ser verdadeiro ou falso.',
+            'valid_if_null_or_false' => 'O campo :attribute só é válido se o campo :field for nulo ou falso.'
         ]
     ],
 ];

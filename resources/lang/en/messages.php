@@ -17,7 +17,8 @@ return [
             'required' => 'The :attribute field is mandatory.',
             'min' => 'The :attribute field must contain more than :min characters.',
             'max' => 'The :attribute field must contain a maximum of :max characters.',
-            'boolean' => 'The :attribute field must be true or false.'
+            'boolean' => 'The :attribute field must be true or false.',
+            'valid_if_null_or_false' => 'The :attribute field is only valid if the :field field is null or false.'
         ]
     ],
 ];
