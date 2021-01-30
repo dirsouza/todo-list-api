@@ -28,8 +28,8 @@ class TaskRequest extends FormRequest
         return [
             'title' => 'required|min:5|max:100',
             'description' => 'min:5',
-            'archived' => 'nullable|boolean',
-            'completed' => 'nullable|boolean'
+            'archived' => 'nullable|boolean|valid_if_null_or_false:completed',
+            'completed' => 'nullable|boolean|valid_if_null_or_false:archived'
         ];
     }
 
@@ -60,6 +60,7 @@ class TaskRequest extends FormRequest
             'min' => trans('messages.tasks.validation.min', ['attribute' => ':attribute', 'min' => ':min']),
             'max' => trans('messages.tasks.validation.max', ['attribute' => ':attribute', 'max' => ':max']),
             'boolean' => trans('messages.tasks.validation.boolean', ['attribute' => ':attribute']),
+            'valid_if_null_or_false' => trans('messages.tasks.validation.valid_if_null_or_false', ['attribute' => ':attribute', 'field' => ':field'])
         ];
     }
 
