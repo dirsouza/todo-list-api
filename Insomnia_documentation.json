@@ -1,0 +1,276 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2021-01-31T03:50:47.289Z",
+    "__export_source": "insomnia.desktop.app:v2020.4.2",
+    "resources": [
+        {
+            "_id": "req_be98aae094474d0885932e442fd03da3",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1612054851704,
+            "created": 1611967302008,
+            "url": "{{ base_url }}/tasks",
+            "name": "Tasks List",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [
+                {
+                    "name": "page",
+                    "value": "1",
+                    "description": "",
+                    "id": "pair_71e440f357394c399d91e37c350d006e",
+                    "disabled": false
+                },
+                {
+                    "name": "perPage",
+                    "value": "1",
+                    "description": "",
+                    "id": "pair_b50130b0deb14b4e97c353ec0b76bc44",
+                    "disabled": false
+                },
+                {
+                    "name": "search",
+                    "value": "tarefa teste",
+                    "description": "",
+                    "id": "pair_0f9046e1a1164df68503f83c304adeb4",
+                    "disabled": true
+                },
+                {
+                    "name": "archived",
+                    "value": "0",
+                    "description": "",
+                    "id": "pair_81ebef67dedd48cabaa67d6349cf08e4",
+                    "disabled": true
+                },
+                {
+                    "name": "completed",
+                    "value": "0",
+                    "description": "",
+                    "id": "pair_3590dd7ddc2b47abbbb86679eb665b37",
+                    "disabled": true
+                }
+            ],
+            "headers": [
+                {
+                    "name": "Accept-Language",
+                    "value": "pt-BR",
+                    "description": "",
+                    "id": "pair_64358cf3482443f78608505e1940aa92",
+                    "disabled": false
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1611967302008,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "parentId": null,
+            "modified": 1611967237070,
+            "created": 1611967237070,
+            "name": "Sell2Brazil",
+            "description": "",
+            "scope": null,
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_737f1fc75ebe4086ba619eeeff7f478d",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1612064308427,
+            "created": 1612064205402,
+            "url": "{{ base_url }}/tasks/3",
+            "name": "Tasks Task",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Accept-Language",
+                    "value": "pt-BR",
+                    "description": "",
+                    "id": "pair_64358cf3482443f78608505e1940aa92",
+                    "disabled": false
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1611967301983,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_73207cc5df51493195fd3333e2bd5bfd",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1612061528206,
+            "created": 1611980208677,
+            "url": "{{ base_url }}/tasks/create",
+            "name": "Tasks Create",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"title\": \"\",\n\t\"description\": \"Descrição da tarefa teste 1\"\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_22e71c8d01124472b0ee877517ab3557"
+                },
+                {
+                    "name": "Accept-Language",
+                    "value": "pt-BR",
+                    "description": "",
+                    "id": "pair_a70ce017a83a4e778963cf98eceb926b",
+                    "disabled": false
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1611967301958,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_2b50594f1a384eb49e43f0fd0e1a139f",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1612029145293,
+            "created": 1611984153796,
+            "url": "{{ base_url }}/tasks/update/3",
+            "name": "Tasks Update",
+            "description": "",
+            "method": "PUT",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"title\": \"Tarefa teste 3\",\n\t\"description\": \"Descrição da tarefa teste 3\",\n\t\"archived\": true,\n\t\"completed\": true\n}"
+            },
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json",
+                    "id": "pair_22e71c8d01124472b0ee877517ab3557"
+                },
+                {
+                    "name": "Accept-Language",
+                    "value": "pt-BR",
+                    "description": "",
+                    "id": "pair_a70ce017a83a4e778963cf98eceb926b",
+                    "disabled": false
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1611137469986,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_0fa059d0faa749f79d2e8c8bc155663d",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1611984949823,
+            "created": 1611984932721,
+            "url": "{{ base_url }}/tasks/delete/3",
+            "name": "Tasks Delete",
+            "description": "",
+            "method": "DELETE",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "Accept-Language",
+                    "value": "pt-BR",
+                    "description": "",
+                    "id": "pair_a70ce017a83a4e778963cf98eceb926b",
+                    "disabled": false
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1610722554000,
+            "isPrivate": false,
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "env_071091df364a0ebbeac22972755667fc55927504",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1611967237115,
+            "created": 1611967237115,
+            "name": "Base Environment",
+            "data": {},
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1611967237115,
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_071091df364a0ebbeac22972755667fc55927504",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1611967237118,
+            "created": 1611967237118,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        },
+        {
+            "_id": "spc_ea6d62a6e78341049ac773bd0febe5c5",
+            "parentId": "wrk_5dc11e6309d743f091da58bc6f9b2080",
+            "modified": 1611967237074,
+            "created": 1611967237074,
+            "fileName": "Sell2Brazil",
+            "contents": "",
+            "contentType": "yaml",
+            "_type": "api_spec"
+        },
+        {
+            "_id": "env_74da5398d2844553afadc1718cc883fc",
+            "parentId": "env_071091df364a0ebbeac22972755667fc55927504",
+            "modified": 1611967326150,
+            "created": 1611967245010,
+            "name": "development",
+            "data": {
+                "base_url": "http://sell2brazil-api.test/api/v1"
+            },
+            "dataPropertyOrder": {
+                "&": [
+                    "base_url"
+                ]
+            },
+            "color": "#6ecb67",
+            "isPrivate": false,
+            "metaSortKey": 1611967245010,
+            "_type": "environment"
+        }
+    ]
+}
