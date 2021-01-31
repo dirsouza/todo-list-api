@@ -7,6 +7,8 @@ return [
         'archived' => 'Archived',
         'completed' => 'Completed',
         'notFound' => 'No tasks found.',
+        'successTask' => 'Task found successfully.',
+        'successListing' => 'Tasks successfully listed.',
         'successRegister' => 'Task successfully registered.',
         'errorRegister' => 'It was not possible to register the task.',
         'successUpdate' => 'Task updated successfully.',

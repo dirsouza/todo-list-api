@@ -7,6 +7,8 @@ return [
         'archived' => 'Arquivar',
         'completed' => 'Completar',
         'notFound' => 'Nenhuma tarefa encontrada.',
+        'successTask' => 'Tarefa encontrada com sucesso.',
+        'successListing' => 'Tarefas listadas com sucesso.',
         'successRegister' => 'Tarefa cadastrada com sucesso.',
         'errorRegister' => 'Não foi possível realizar o cadastro da tarefa.',
         'successUpdate' => 'Tarefa atualizada com sucesso.',
