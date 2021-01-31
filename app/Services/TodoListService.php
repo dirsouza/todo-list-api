@@ -36,7 +36,35 @@ class TodoListService
 
             return [
                 'success' => true,
+                'message' => trans('messages.tasks.successListing'),
                 'data' => $tasks,
+                'code' => 200
+            ];
+        } catch (\Throwable $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage(),
+                'data' => null,
+                'code' => $e->getCode()
+            ];
+        }
+    }
+
+    /**
+     * @param int $id
+     * @return array
+     */
+    public function getTask(int $id): array
+    {
+        try {
+            $task = $this->todoList->find($id);
+
+            throw_if(!$task, \Exception::class, trans('messages.tasks.notFound'), 404);
+
+            return [
+                'success' => true,
+                'message' => trans('messages.tasks.successTask'),
+                'data' => $task,
                 'code' => 200
             ];
         } catch (\Throwable $e) {
