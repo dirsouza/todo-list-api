@@ -73,7 +73,8 @@ class TaskRequest extends FormRequest
     {
         throw new HttpResponseException(Response()->json([
             'success' => false,
-            'message' => $validator->errors()->unique()
+            'message' => $validator->errors()->unique(),
+            'data' => null,
         ], 422));
     }
 }
