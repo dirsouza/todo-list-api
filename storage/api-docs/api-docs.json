@@ -1,0 +1,637 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sell2brazil API",
+        "description": "Enables task management",
+        "contact": {
+            "email": "diogo.souza@msn.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.0.1"
+    },
+    "servers": [
+        {
+            "url": "http://sell2brazil-api.test"
+        }
+    ],
+    "paths": {
+        "/api/v1/tasks": {
+            "get": {
+                "tags": [
+                    "To-Do List"
+                ],
+                "summary": "Find tasks",
+                "description": "Get the paged list of tasks",
+                "operationId": "list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    },
+                    {
+                        "name": "perPage",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 15
+                        }
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "archived",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "completed",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TodoListPaginedResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/{id}": {
+            "get": {
+                "tags": [
+                    "To-Do List"
+                ],
+                "summary": "Find task",
+                "description": "Find a task",
+                "operationId": "task",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TodoListResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/create": {
+            "post": {
+                "tags": [
+                    "To-Do List"
+                ],
+                "summary": "Create tasks",
+                "description": "Create a new task",
+                "operationId": "create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TodoListCreateOrUpdateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TodoListResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorRequestDTO"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/update/{id}": {
+            "put": {
+                "tags": [
+                    "To-Do List"
+                ],
+                "summary": "Update tasks",
+                "description": "Update a task",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/TodoListCreateOrUpdateDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TodoListResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorRequestDTO"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/tasks/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "To-Do List"
+                ],
+                "summary": "Delete tasks",
+                "description": "Delete a task",
+                "operationId": "delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "default": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TodoListDeleteResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorResponseDTO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ErrorRequestDTO": {
+                "title": "ErrorRequestDTO",
+                "description": "Error",
+                "properties": {
+                    "success": {
+                        "title": "success",
+                        "description": "$success",
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "Error description",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "$data",
+                        "type": "string",
+                        "example": null
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ErrorRequest"
+                }
+            },
+            "ErrorResponseDTO": {
+                "title": "ErrorResponseDTO",
+                "description": "Error",
+                "properties": {
+                    "success": {
+                        "title": "success",
+                        "description": "$success",
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "Message of error",
+                        "type": "string"
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "$data",
+                        "type": "string",
+                        "example": null
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ErrorResponse"
+                }
+            },
+            "TodoListCreateOrUpdateDTO": {
+                "title": "TodoListCreateOrUpdateDTO",
+                "description": "TodoList Create or Update",
+                "required": [
+                    "title"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "Title of task",
+                        "type": "string",
+                        "example": "My first tasks"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Description of task",
+                        "type": "string",
+                        "example": "Description my first tasks"
+                    },
+                    "archived": {
+                        "title": "archived",
+                        "description": "Defines whether the task it is archived",
+                        "type": "boolean",
+                        "example": 0
+                    },
+                    "completed": {
+                        "title": "completed",
+                        "description": "Defines whether the task it is completed",
+                        "type": "boolean",
+                        "example": 0
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "TodoListCreateOrUpdate"
+                }
+            },
+            "TodoListDTO": {
+                "title": "TodoListDTO",
+                "description": "TodoList Model",
+                "required": [
+                    "title"
+                ],
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "description": "ID of task",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "title": {
+                        "title": "title",
+                        "description": "Title of task",
+                        "type": "string",
+                        "example": "My first tasks"
+                    },
+                    "description": {
+                        "title": "description",
+                        "description": "Description of task",
+                        "type": "string",
+                        "example": "Description my first tasks"
+                    },
+                    "archived": {
+                        "title": "archived",
+                        "description": "Defines whether the task it is archived",
+                        "type": "boolean",
+                        "example": 0
+                    },
+                    "completed": {
+                        "title": "completed",
+                        "description": "Defines whether the task it is completed",
+                        "type": "boolean",
+                        "example": 0
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "TodoList"
+                }
+            },
+            "TodoListDeleteResponseDTO": {
+                "title": "TodoListDeleteResponseDTO",
+                "description": "TodoList Delete Response",
+                "properties": {
+                    "success": {
+                        "title": "success",
+                        "description": "$success",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "$message",
+                        "type": "string",
+                        "example": "Task successfully deleted."
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "$data",
+                        "type": "string",
+                        "example": null
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "TodoListDeleteResponse"
+                }
+            },
+            "TodoListPaginedDTO": {
+                "title": "TodoListPaginedDTO",
+                "description": "TodoList Pagined",
+                "properties": {
+                    "current_page": {
+                        "title": "current_page",
+                        "description": "$current_page",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "data": {
+                        "title": "data",
+                        "description": "$data",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TodoListDTO"
+                        }
+                    },
+                    "first_page_url": {
+                        "title": "first_page_url",
+                        "description": "$first_page_url",
+                        "type": "string",
+                        "example": "http://localhost.com/api/v1/tasks?page=1"
+                    },
+                    "from": {
+                        "title": "from",
+                        "description": "$from",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "last_page": {
+                        "title": "from",
+                        "description": "$last_page",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 3
+                    },
+                    "last_page_url": {
+                        "title": "last_page_url",
+                        "description": "$last_page_url",
+                        "type": "string",
+                        "example": "http://localhost.com/api/v1/tasks?page=3"
+                    },
+                    "next_page_url": {
+                        "title": "next_page_url",
+                        "description": "$next_page_url",
+                        "type": "string",
+                        "example": "http://localhost.com/api/v1/tasks?page=2"
+                    },
+                    "path": {
+                        "title": "path",
+                        "description": "$path",
+                        "type": "string",
+                        "example": "http://localhost.com/api/v1/tasks"
+                    },
+                    "per_page": {
+                        "title": "per_page",
+                        "description": "$per_page",
+                        "type": "string",
+                        "example": "15"
+                    },
+                    "prev_page_url": {
+                        "title": "prev_page_url",
+                        "description": "$prev_page_url",
+                        "type": "string",
+                        "example": null
+                    },
+                    "to": {
+                        "title": "to",
+                        "description": "$to",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 2
+                    },
+                    "total": {
+                        "title": "total",
+                        "description": "$total",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 45
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "TodoListPagined"
+                }
+            },
+            "TodoListPaginedResponseDTO": {
+                "title": "TodoListPaginedResponseDTO",
+                "description": "TodoList Pagined Response",
+                "properties": {
+                    "success": {
+                        "title": "success",
+                        "description": "$success",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "$message",
+                        "type": "string",
+                        "example": "Tasks successfully listed."
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/TodoListPaginedDTO"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "TodoListPaginedResponse"
+                }
+            },
+            "TodoListResponseDTO": {
+                "title": "TodoListResponseDTO",
+                "description": "TodoList Response",
+                "properties": {
+                    "success": {
+                        "title": "success",
+                        "description": "$success",
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "title": "message",
+                        "description": "$message",
+                        "type": "string",
+                        "example": "Task found successfully."
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/TodoListDTO"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "TodoListResponse"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "To-Do List",
+            "description": "API Endpoints of Tasks"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
