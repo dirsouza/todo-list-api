@@ -27,7 +27,7 @@ class ValidIfNullOrFalseRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        return !($value === $this->fieldValue);
+        return (!!$value === false && !!$this->fieldValue === false) || (!!$value !== !!$this->fieldValue);
     }
 
     /**

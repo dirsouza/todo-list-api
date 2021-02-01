@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Str;
 
 class Internationalization
 {
@@ -19,7 +20,7 @@ class Internationalization
         $locale = explode(',', $request->server('HTTP_ACCEPT_LANGUAGE'))[0];
 
         if (!empty($locale)) {
-            App::setLocale($locale);
+            App::setLocale(Str::lower($locale));
         }
 
         return $next($request);

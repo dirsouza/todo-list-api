@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\QueryFilters;
 
 use Closure;
-use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 
@@ -36,6 +35,6 @@ abstract class Filter
      */
     protected function filterName(): string
     {
-        return Str::snake(class_basename($this));
+        return Str::camel(class_basename($this));
     }
 }

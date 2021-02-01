@@ -26,7 +26,7 @@ class TasksFactory implements TaskableFactory
      */
     public function make(): Builder
     {
-        return count($this->request->except(['page', 'perPage'])) ?
+        return count($this->request->except(['page', 'perPage', 'sortBy', 'orderBy'])) ?
             $this->searchTasksInstance() :
             $this->noSearchTasksInstance();
     }

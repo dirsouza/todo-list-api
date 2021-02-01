@@ -30,6 +30,7 @@ class TodoListService
         try {
             $tasks = (new TasksFactory($request))
                 ->make()
+                ->orderBy($request->sortBy, $request->orderBy)
                 ->paginate($request->perPage);
 
             throw_if(!$tasks, \Exception::class, trans('messages.tasks.notFound'), 404);

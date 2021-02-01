@@ -27,7 +27,7 @@ class TaskRequest extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:100',
-            'description' => 'min:5',
+            'description' => 'nullable|min:5',
             'archived' => 'nullable|boolean|valid_if_null_or_false:completed',
             'completed' => 'nullable|boolean|valid_if_null_or_false:archived'
         ];

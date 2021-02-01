@@ -42,6 +42,8 @@ class TodoListController extends Controller
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=1,
      *              default=1
      *          )
      *     ),
@@ -52,6 +54,8 @@ class TodoListController extends Controller
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=1,
      *              default=15
      *          )
      *     ),
@@ -66,11 +70,24 @@ class TodoListController extends Controller
      *     ),
      *
      *     @OA\Parameter(
+     *          name="creationDate",
+     *          in="query",
+     *          required=false,
+     *          @OA\Schema(
+     *              type="string",
+     *              format="date"
+     *          )
+     *     ),
+     *
+     *     @OA\Parameter(
      *          name="archived",
      *          in="query",
      *          required=false,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=0,
+     *              maximum=1,
      *          )
      *     ),
      *
@@ -80,6 +97,39 @@ class TodoListController extends Controller
      *          required=false,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=0,
+     *              maximum=1,
+     *          )
+     *     ),
+     *
+     *     @OA\Parameter(
+     *          name="sortBy",
+     *          in="query",
+     *          required=false,
+     *          explode=true,
+     *          @OA\Schema(
+     *              type="array",
+     *              default="id",
+     *              @OA\Items(
+     *                  type="string",
+     *                  enum={"id", "title"}
+     *              )
+     *          )
+     *     ),
+     *
+     *     @OA\Parameter(
+     *          name="orderBy",
+     *          in="query",
+     *          required=false,
+     *          explode=true,
+     *          @OA\Schema(
+     *              type="array",
+     *              default="asc",
+     *              @OA\Items(
+     *                  type="string",
+     *                  enum={"asc", "desc"}
+     *              )
      *          )
      *     ),
      *
@@ -120,6 +170,8 @@ class TodoListController extends Controller
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=1,
      *              default=1
      *          )
      *     ),
@@ -203,6 +255,8 @@ class TodoListController extends Controller
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=1,
      *              default=1
      *          )
      *     ),
@@ -262,6 +316,8 @@ class TodoListController extends Controller
      *          required=true,
      *          @OA\Schema(
      *              type="integer",
+     *              format="int64",
+     *              minimum=1,
      *              default=1
      *          )
      *     ),
